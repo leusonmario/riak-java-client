@@ -108,7 +108,16 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <classpathDependencyExcludes>
+            <exclude>javax.measure:jsr-275</exclude>
+          </classpathDependencyExcludes>
+        </configuration>
+      </plugin>            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
@@ -154,6 +163,17 @@
                     </execution>
                 </executions>
             </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>cobertura-maven-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+              <format>xml</format>
+              <maxmem>256m</maxmem>
+              <!-- aggregated reports for multi-module projects -->
+              <aggregate>true</aggregate>
+          </configuration>
+         </plugin>
         </plugins>
     </build>
     <profiles>
@@ -161,7 +181,16 @@
             <id>itest</id>
             <build>
                 <plugins>
-					<!--
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <classpathDependencyExcludes>
+            <exclude>javax.measure:jsr-275</exclude>
+          </classpathDependencyExcludes>
+        </configuration>
+      </plugin>					<!--
 						Run integration tests (ITest*.java) by executing `mvn
 						-Pitest verify`
 					-->
@@ -178,7 +207,18 @@
                             </execution>
                         </executions>
                     </plugin>
-                </plugins>
+                <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>cobertura-maven-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+              <format>xml</format>
+              <maxmem>256m</maxmem>
+              <!-- aggregated reports for multi-module projects -->
+              <aggregate>true</aggregate>
+          </configuration>
+         </plugin>
+        </plugins>
             </build>
         </profile>
         <profile>
@@ -191,7 +231,16 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <classpathDependencyExcludes>
+            <exclude>javax.measure:jsr-275</exclude>
+          </classpathDependencyExcludes>
+        </configuration>
+      </plugin>                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>1.4</version>
@@ -206,7 +255,18 @@
                         </executions>
                     </plugin>
 					<!-- NOTE: source and javadoc jars automatically generated on release (http://maven.apache.org/pom.html#The_Super_POM) -->
-                </plugins>
+                <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>cobertura-maven-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+              <format>xml</format>
+              <maxmem>256m</maxmem>
+              <!-- aggregated reports for multi-module projects -->
+              <aggregate>true</aggregate>
+          </configuration>
+         </plugin>
+        </plugins>
             </build>
         </profile>
         <profile>
@@ -219,7 +279,16 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <classpathDependencyExcludes>
+            <exclude>javax.measure:jsr-275</exclude>
+          </classpathDependencyExcludes>
+        </configuration>
+      </plugin>                    <plugin>
                         <groupId>com.github.github</groupId>
                         <artifactId>downloads-maven-plugin</artifactId>
                         <version>0.4</version>
@@ -237,7 +306,18 @@
                             </execution>
                         </executions>
                     </plugin>
-                </plugins>
+                <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>cobertura-maven-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+              <format>xml</format>
+              <maxmem>256m</maxmem>
+              <!-- aggregated reports for multi-module projects -->
+              <aggregate>true</aggregate>
+          </configuration>
+         </plugin>
+        </plugins>
             </build>
         </profile>
         <profile>
@@ -250,7 +330,16 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <classpathDependencyExcludes>
+            <exclude>javax.measure:jsr-275</exclude>
+          </classpathDependencyExcludes>
+        </configuration>
+      </plugin>                    <plugin>
                         <artifactId>maven-assembly-plugin</artifactId>
                         <version>2.2.1</version>
                         <configuration>
@@ -270,7 +359,18 @@
                             </execution>
                         </executions>
                     </plugin>
-                </plugins>
+                <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>cobertura-maven-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+              <format>xml</format>
+              <maxmem>256m</maxmem>
+              <!-- aggregated reports for multi-module projects -->
+              <aggregate>true</aggregate>
+          </configuration>
+         </plugin>
+        </plugins>
             </build>
         </profile>
         <profile>
@@ -283,7 +383,16 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <classpathDependencyExcludes>
+            <exclude>javax.measure:jsr-275</exclude>
+          </classpathDependencyExcludes>
+        </configuration>
+      </plugin>                    <plugin>
                         <artifactId>maven-assembly-plugin</artifactId>
                         <version>2.2.1</version>
                         <configuration>
@@ -303,7 +412,18 @@
                             </execution>
                         </executions>
                     </plugin>
-                </plugins>
+                <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>cobertura-maven-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+              <format>xml</format>
+              <maxmem>256m</maxmem>
+              <!-- aggregated reports for multi-module projects -->
+              <aggregate>true</aggregate>
+          </configuration>
+         </plugin>
+        </plugins>
             </build>
         </profile>
         <profile>
@@ -316,7 +436,16 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <classpathDependencyExcludes>
+            <exclude>javax.measure:jsr-275</exclude>
+          </classpathDependencyExcludes>
+        </configuration>
+      </plugin>                    <plugin>
                         <artifactId>maven-assembly-plugin</artifactId>
                         <version>2.2.1</version>
                         <configuration>
@@ -336,7 +465,18 @@
                             </execution>
                         </executions>
                     </plugin>
-                </plugins>
+                <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>cobertura-maven-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+              <format>xml</format>
+              <maxmem>256m</maxmem>
+              <!-- aggregated reports for multi-module projects -->
+              <aggregate>true</aggregate>
+          </configuration>
+         </plugin>
+        </plugins>
             </build>
         </profile>
     </profiles>

@@ -1,8 +1,25 @@
+
+sudo: required
 language: java
-script: mvn -Pitest -DargLine="-Dcom.basho.riak.search=true -Dcom.basho.riak.2i=true" clean verify
-notifications:
-  # Email notifications are disabled to not annoy anybody.
-  # See http://about.travis-ci.org/docs/user/build-configuration/ to learn more
-  # about configuring notification recipients and more.
-  webhooks: http://basho-engbot.herokuapp.com/travis?key=a8f477c8cdaabc8118d2a650281ff4a71eff875f
-  email: false
+
+jdk:
+  - oraclejdk8
+
+script:
+  - mvn clean cobertura:cobertura -Dtest=TestMapReduceFunctions#generatesCorrectJson -DfailIfNoTests=false
+
+before_deploy:
+- tar -zcvf coverage-result.tar.gz /home/travis/build/leusonmario/riak-java-client/target/site/cobertura
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "Xb4S0iQ1lihVd/t1NDhqyBtDVPU0LUHiWxj1nwXFrlR1iRnBQJPDScAxSkk9WHgENQaJ8wE2N1sV1OsXyJjuBuGROJbTvAUpVs9q1eKusbg5Ym2+Ie136a4JIRumXpLGr3KSy/eG9Qd3rUUs+qdOlWjfPIQSJfMlul1bccUhqu9OwTa9OP8suSoYXempwwjEuTnNS+FMU1fHoE0Ls/wCSaWFAI/p4ypa6RFSQqI5k9nxqNLtsj6r2Y8TesAGFEqC1YETIyIoo2lVdVtfSqzmMYpHzrNxuPapJyJcwNAWV8s7goDZWlKXaEMx1nuxZZFRlvdzqfZOnMOI9Jv7qNBQnb6wIW3hm1VzA29Hax3uPnFGopQYNVjp7b1axOvNoGTQHPEzT2Ne4GiDr25vvBj8op58j5Gjq9WYfnHH6dw3KkusURfx2RVSHvVG7klta7rkZzKHhViCVeIOF+EO8oihKwZggulIKP3wMJckD4+Lg3fM7f2ZLK2I2uzmwwCtdGy8/KBUnKVrkCxFpbFMSx3MaLsnVaov48DbclA9EA/Y/SadGCIOQ3Iiq9ePdaFleQSLHjAXSxHFRbO8h9l7Cf19/JuPmT9OWawcbe5twfqwvc91HTMC3eJ7B71vtVIJnctR7BIUUsMHojBirW3smBZwzQdSFCVRc5pNtVM2wuquDYE="
+
+
+  file: coverage-result.tar.gz
+  file_glob: true
+  overwrite: true
+  skip_cleanup: true
+  on:
+    tags: true
